@@ -7,7 +7,7 @@
 <template>
 	<div class="register-container">
 		<div class="register-main">
-			<h1 class="register-title">注册{{$store.state.webTitle}}账号</h1>
+			<h1 class="register-title">注册{{ $store.state.webTitle }}账号</h1>
 			<el-form
 				ref="ruleFormRef"
 				:model="ruleForm"
@@ -23,12 +23,15 @@
 				<el-form-item label="登录密码" prop="password">
 					<el-input v-model="ruleForm.password" show-password />
 				</el-form-item>
+				<el-form-item label="确认密码" prop="comfirmPassword">
+					<el-input v-model="ruleForm.password" show-password />
+				</el-form-item>
 				<el-form-item label="邀请码(选填)" prop="invitationCode">
 					<el-input v-model="ruleForm.invitationCode" />
 				</el-form-item>
 
 				<p class="register-declare">
-					注册账号即代表您同意了{{$store.state.webTitle}}的
+					注册账号即代表您同意了{{ $store.state.webTitle }}的
 					<router-link to="/termsofService">服务条款</router-link> 和
 					<router-link to="/privacyPolicy"
 						>隐私政策与声明</router-link
@@ -59,10 +62,11 @@ export default {
 		const ruleForm = reactive({
 			account: '',
 			password: '',
+			comfirmPassword: '',
 			invitationCode: '',
 		});
 		const rules = reactive({
-			account: [
+			name: [
 				{
 					required: true,
 					message: '请输入用户名',
@@ -79,6 +83,19 @@ export default {
 				{
 					required: true,
 					message: '请输入密码',
+					trigger: 'blur',
+				},
+				{
+					min: 6,
+					max: 12,
+					message: '长度为6-12位数字或字母组成',
+					trigger: 'blur',
+				},
+			],
+			comfirmPassword: [
+				{
+					required: true,
+					message: '请输入确认密码',
 					trigger: 'blur',
 				},
 				{

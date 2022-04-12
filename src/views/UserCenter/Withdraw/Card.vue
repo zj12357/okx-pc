@@ -22,7 +22,7 @@
 			size="large"
 			label-position="top"
 		>
-			<el-form-item label="姓名" prop="username">
+			<el-form-item label="真实姓名" prop="username">
 				<el-input v-model="ruleForm.username" />
 			</el-form-item>
 			<el-form-item label="银行卡号" prop="bankNumber">
@@ -70,7 +70,7 @@ export default {
 			name: [
 				{
 					required: true,
-					message: '请输入姓名',
+					message: '请输入真实姓名',
 					trigger: 'blur',
 				},
 			],

@@ -30,13 +30,6 @@
 						type="number"
 					/>
 				</el-form-item>
-				<el-form-item prop="amount" label="提现密码">
-					<el-input
-						v-model="ruleForm.password"
-						placeholder="请输入提现密码"
-						type="password"
-					/>
-				</el-form-item>
 				<el-form-item>
 					<el-button
 						type="primary"
@@ -63,7 +56,6 @@ export default {
 	setup() {
 		const ruleForm = reactive({
 			amount: '',
-			password: '',
 		});
 		const ruleFormRef = ref(null);
 		const isRecharge = ref(false);
@@ -72,13 +64,6 @@ export default {
 				{
 					required: true,
 					message: '请输入充值金额',
-					trigger: 'blur',
-				},
-			],
-			password: [
-				{
-					required: true,
-					message: '请输入提现密码',
 					trigger: 'blur',
 				},
 			],
